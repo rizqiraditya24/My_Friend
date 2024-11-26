@@ -256,7 +256,7 @@ class EditFriendActivity : AppCompatActivity() {
         val photoPathToSave = currentPhotoPath ?: photoFile.absolutePath
 
         val friendData = if (oldFriend == null) {
-            Friend(name, school, bio, photoPathToSave)
+            Friend(name, school, bio, photoPathToSave, "0")
         } else {
             oldFriend!!.copy(
                 name = name,

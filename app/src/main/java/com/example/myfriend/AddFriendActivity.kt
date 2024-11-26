@@ -250,7 +250,7 @@ class AddFriendActivity : AppCompatActivity() {
         val bio = binding.etBio.text.toString().trim()
 
         if (oldFriend == null) {
-            val data = Friend(name, school, bio, photoFile.absolutePath)
+            val data = Friend(name, school, bio, photoFile.absolutePath, "0")
             lifecycleScope.launch {
                 viewModel.insertFriend(data)
             }

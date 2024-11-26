@@ -1,6 +1,7 @@
 package com.example.myfriend.data
 
 // Kelas data untuk merepresentasikan informasi teman
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -10,7 +11,9 @@ data class Friend(
     var name: String, // Nama teman
     var school: String, // Nama sekolah teman
     var bio: String, // Biografi atau keterangan tambahan tentang teman
-    var photoPath: String? // Path dari file gambar (opsional, dapat bernilai null)
+    var photoPath: String?, // Path dari file gambar (opsional, dapat bernilai null)
+    @ColumnInfo(defaultValue = "")
+    var phoneNumber: String
 ) {
     // Anotasi @PrimaryKey menandai bahwa properti ini adalah primary key untuk tabel
     @PrimaryKey(autoGenerate = true)
