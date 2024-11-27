@@ -212,7 +212,7 @@ class EditFriendActivity : AppCompatActivity() {
                 oldFriend = friend
                 binding.etName.setText(friend?.name)
                 binding.etSchool.setText(friend?.school)
-                binding.etBio.setText(friend?.bio)
+               // binding.etBio.setText(friend?.bio)
 
                 friend?.photoPath?.let { path ->
                     val photoFile = File(path)
@@ -256,12 +256,12 @@ class EditFriendActivity : AppCompatActivity() {
         val photoPathToSave = currentPhotoPath ?: photoFile.absolutePath
 
         val friendData = if (oldFriend == null) {
-            Friend(name, school, bio, photoPathToSave, "0")
+            Friend(name, school, photoPathToSave, "0")
         } else {
             oldFriend!!.copy(
                 name = name,
                 school = school,
-                bio = bio,
+               // bio = bio,
                 photoPath = photoPathToSave
             ).apply {
                 id = idFriend

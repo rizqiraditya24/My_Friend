@@ -10,7 +10,6 @@ import androidx.room.PrimaryKey
 data class Friend(
     var name: String, // Nama teman
     var school: String, // Nama sekolah teman
-    var bio: String, // Biografi atau keterangan tambahan tentang teman
     var photoPath: String?, // Path dari file gambar (opsional, dapat bernilai null)
     @ColumnInfo(defaultValue = "")
     var phone: String

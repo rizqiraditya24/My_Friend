@@ -3,6 +3,7 @@ package com.example.myfriend.data
 import android.content.Context
 import androidx.room.AutoMigration
 import androidx.room.Database
+import androidx.room.DeleteColumn
 import androidx.room.RenameColumn
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -11,15 +12,17 @@ import androidx.room.migration.AutoMigrationSpec
 // Menandakan bahwa kelas ini adalah database Room
 // Menggunakan entitas Friend dan versi 3 dari skema database
 @Database(entities = [Friend::class],
-    version = 3,
+    version = 4,
     exportSchema = true,
     autoMigrations = [
         AutoMigration(1,2),
-        AutoMigration(2,3, MyDatabase.MyAutoMigration::class)
+        AutoMigration(2,3, MyDatabase.MyAutoMigration::class),
+        AutoMigration(3,4, MyDatabase.MyAutoMigration::class)
     ])
 abstract class MyDatabase : RoomDatabase() {
 
     @RenameColumn("friend", "phoneNumber","phone")
+    @DeleteColumn("friend","bio")
     class MyAutoMigration : AutoMigrationSpec
 
     // Deklarasi abstract function untuk DAO (Data Access Object)

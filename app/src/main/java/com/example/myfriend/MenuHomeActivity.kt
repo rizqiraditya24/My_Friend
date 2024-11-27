@@ -26,7 +26,7 @@ class MenuHomeActivity : CoreActivity<ActivityMenuHomeBinding, FriendViewModel>(
             val intent = Intent(this, DetailFriendActivity::class.java).apply {
                 putExtra("EXTRA_NAME", friend.name)
                 putExtra("EXTRA_SCHOOL", friend.school)
-                putExtra("EXTRA_BIO", friend.bio)
+                //putExtra("EXTRA_BIO", friend.bio)
                 putExtra("EXTRA_IMAGE_PATH", friend.photoPath)  // Mengirimkan path file gambar
                 putExtra("EXTRA_ID", friend.id)
             }

@@ -189,7 +189,7 @@ class AddFriendActivity : AppCompatActivity() {
                     oldFriend = friend
                     binding.etName.setText(friend?.name)
                     binding.etSchool.setText(friend?.school)
-                    binding.etBio.setText(friend?.bio)
+                    //binding.etBio.setText(friend?.bio)
 
                     if (!friend?.photoPath.isNullOrEmpty()) {
                         val photo = BitmapFactory.decodeFile(friend?.photoPath)
@@ -247,10 +247,10 @@ class AddFriendActivity : AppCompatActivity() {
     private fun addData() {
         val name = binding.etName.text.toString().trim()
         val school = binding.etSchool.text.toString().trim()
-        val bio = binding.etBio.text.toString().trim()
+        //val bio = binding.etBio.text.toString().trim()
 
         if (oldFriend == null) {
-            val data = Friend(name, school, bio, photoFile.absolutePath, "0")
+            val data = Friend(name, school, photoFile.absolutePath, "0")
             lifecycleScope.launch {
                 viewModel.insertFriend(data)
             }
@@ -258,7 +258,7 @@ class AddFriendActivity : AppCompatActivity() {
             val data = oldFriend!!.copy(
                 name = name,
                 school = school,
-                bio = bio,
+                //bio = bio,
                 photoPath = photoFile.absolutePath
             ).apply {
                 id = idFriend

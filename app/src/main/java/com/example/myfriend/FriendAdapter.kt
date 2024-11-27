@@ -56,7 +56,7 @@ class FriendAdapter(
         fun bind(friend: Friend, onItemClick: (Friend) -> Unit) {
             nameTextView.text = friend.name // Menetapkan nama teman
             schoolTextView.text = friend.school // Menetapkan nama sekolah teman
-            bioTextView.text = friend.bio // Menetapkan biografi teman
+           // bioTextView.text = friend.bio // Menetapkan biografi teman
 
             // Menetapkan gambar profil dari path file jika tersedia, jika tidak, gunakan placeholder
             if (friend.photoPath?.isNotEmpty() == true) {

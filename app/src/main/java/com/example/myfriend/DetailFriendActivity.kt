@@ -57,7 +57,7 @@ class DetailFriendActivity : AppCompatActivity() {
 
                 binding.tvName.text = friend.name
                 binding.tvSchool.text = friend.school
-                binding.tvBio.text = friend.bio
+                //binding.tvBio.text = friend.bio
 
                 // Menampilkan foto jika tersedia
                 val photoFile = friend.photoPath?.let { File(it) }
