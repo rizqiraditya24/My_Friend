@@ -13,7 +13,7 @@ data class Friend(
     var bio: String, // Biografi atau keterangan tambahan tentang teman
     var photoPath: String?, // Path dari file gambar (opsional, dapat bernilai null)
     @ColumnInfo(defaultValue = "")
-    var phoneNumber: String
+    var phone: String
 ) {
     // Anotasi @PrimaryKey menandai bahwa properti ini adalah primary key untuk tabel
     @PrimaryKey(autoGenerate = true)
