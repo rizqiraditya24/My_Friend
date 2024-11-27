@@ -2,6 +2,8 @@ package com.example.myfriend
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -40,6 +42,12 @@ class MainActivity : AppCompatActivity() {
             val destination = Intent(this, MenuHomeActivity::class.java)
             // Memulai activity baru
             startActivity(destination)
+
+            Toast.makeText(this,"Tombol Mulai Berhasil diklik",Toast.LENGTH_SHORT).show()
         }
+    }
+    //function button
+    fun button(view: View) {
+
     }
 }

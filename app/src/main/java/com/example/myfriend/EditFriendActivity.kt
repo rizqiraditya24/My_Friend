@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
-import android.view.ViewTreeObserver
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -149,23 +148,19 @@ class EditFriendActivity : AppCompatActivity() {
     // Mengatur penanganan layout saat keyboard terbuka
     private fun setupKeyboardHandling() {
         val rootView = findViewById<View>(android.R.id.content)
-        rootView.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                val rect = Rect()
-                rootView.getWindowVisibleDisplayFrame(rect)
-                val screenHeight = rootView.height
-                val keypadHeight = screenHeight - rect.bottom
-                if (keypadHeight > screenHeight * 0.15) { // keyboard terbuka
-                    // Menyesuaikan layout atau scroll agar EditText terlihat
-                    val focusedView = currentFocus
-                    if (focusedView != null) {
-                        focusedView.post {
-                            focusedView.scrollIntoView()
-                        }
-                    }
+        rootView.viewTreeObserver.addOnGlobalLayoutListener {
+            val rect = Rect()
+            rootView.getWindowVisibleDisplayFrame(rect)
+            val screenHeight = rootView.height
+            val keypadHeight = screenHeight - rect.bottom
+            if (keypadHeight > screenHeight * 0.15) { // keyboard terbuka
+                // Menyesuaikan layout atau scroll agar EditText terlihat
+                val focusedView = currentFocus
+                focusedView?.post {
+                    focusedView.scrollIntoView()
                 }
             }
-        })
+        }
     }
 
     // Menampilkan dialog untuk memilih foto dari kamera atau galeri

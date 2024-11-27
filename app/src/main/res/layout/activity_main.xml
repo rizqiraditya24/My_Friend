@@ -37,13 +37,16 @@
             android:layout_marginHorizontal="@dimen/_13sdp"
             android:layout_marginVertical="@dimen/_15sdp"/>
 
-        <Button
+        <TextView
             android:id="@+id/btn_start"
             style="@style/Button"
+            android:onClick="button"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
             android:text="@string/let_s_start"
             android:textSize="@dimen/_15ssp"
+            android:textAlignment="center"
+            android:paddingTop="@dimen/_15sdp"
             android:layout_marginHorizontal="@dimen/_13sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             tools:ignore="VisualLintButtonSize" />

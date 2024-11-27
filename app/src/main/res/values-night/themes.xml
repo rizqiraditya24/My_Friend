@@ -65,7 +65,7 @@
     <style name="Button">
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:backgroundTint">@color/darkPurple</item>
+        <item name="android:background">@drawable/bg_button</item>
     </style>
 
     <style name="btnAddTheme">

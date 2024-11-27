@@ -49,7 +49,7 @@ class MenuHomeActivity : CoreActivity<ActivityMenuHomeBinding, FriendViewModel>(
         }
 
         // Menambahkan TextWatcher untuk memfilter teman berdasarkan input pencarian
-        binding.searchBar.doOnTextChanged { text, start, before, count ->
+        binding.searchBar.doOnTextChanged { text, _, _, _ ->
             viewModel.getFriends(text.toString().trim())
         }
 
@@ -61,16 +61,16 @@ class MenuHomeActivity : CoreActivity<ActivityMenuHomeBinding, FriendViewModel>(
     }
 
     // Fungsi untuk memfilter daftar teman berdasarkan query pencarian
-    private fun filterFriends(query: String) {
-        // Menyaring daftar teman berdasarkan nama yang cocok dengan query pencarian
-        val filteredList = if (query.isEmpty()) {
-            friendList
-        } else {
-            friendList.filter { friend ->
-                friend.name.contains(query, ignoreCase = true)  // Memeriksa apakah nama teman cocok dengan query pencarian
-            }
-        }
-        // Memperbarui data pada adapter dengan daftar yang telah difilter
-        adapter.updateData(filteredList)
-    }
+//    private fun filterFriends(query: String) {
+//        // Menyaring daftar teman berdasarkan nama yang cocok dengan query pencarian
+//        val filteredList = if (query.isEmpty()) {
+//            friendList
+//        } else {
+//            friendList.filter { friend ->
+//                friend.name.contains(query, ignoreCase = true)  // Memeriksa apakah nama teman cocok dengan query pencarian
+//            }
+//        }
+//        // Memperbarui data pada adapter dengan daftar yang telah difilter
+//        adapter.updateData(filteredList)
+//    }
 }

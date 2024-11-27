@@ -49,7 +49,7 @@ class FriendAdapter(
     class FriendViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.tv_friend_name) // TextView untuk nama teman
         private val schoolTextView: TextView = itemView.findViewById(R.id.tv_friend_school) // TextView untuk nama sekolah teman
-        private val bioTextView: TextView = itemView.findViewById(R.id.tv_friend_bio) // TextView untuk biografi teman
+        //private val bioTextView: TextView = itemView.findViewById(R.id.tv_friend_bio) // TextView untuk biografi teman
         private val profileImageView: ImageView = itemView.findViewById(R.id.img_friend) // ImageView untuk foto profil teman
 
         // Mengikat data teman ke ViewHolder dan menangani klik item
