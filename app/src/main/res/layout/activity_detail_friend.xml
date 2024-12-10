@@ -45,8 +45,6 @@
                 tools:ignore="RedundantDescriptionCheck" />
         </androidx.appcompat.widget.Toolbar>
 
-        <!--Image view for displaying images from RecyclerView-->
-
         <ImageView
             android:id="@+id/profileImage"
             android:layout_width="match_parent"

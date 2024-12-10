@@ -4,7 +4,6 @@ import androidx.room.*
 import com.crocodic.core.data.CoreDao
 import kotlinx.coroutines.flow.Flow
 
-// Interface Data Access Object (DAO) untuk entitas Friend
 @Dao
 interface FriendDao : CoreDao<Friend> {
 

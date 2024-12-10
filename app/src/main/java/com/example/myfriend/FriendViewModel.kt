@@ -33,7 +33,6 @@ class FriendViewModel@Inject constructor(
         }
     }
 
-
     // Mengambil data teman berdasarkan ID dari database melalui FriendDao
     fun getFriendById(id: Int) = friendDao.getItemById(id)
 

@@ -9,8 +9,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.AutoMigrationSpec
 
-// Menandakan bahwa kelas ini adalah database Room
-// Menggunakan entitas Friend dan versi 3 dari skema database
 @Database(entities = [Friend::class],
     version = 4,
     exportSchema = true,
@@ -30,15 +28,10 @@ abstract class MyDatabase : RoomDatabase() {
     abstract fun friendDao(): FriendDao
 
     companion object {
-        // Variabel INSTANCE digunakan untuk menyimpan instance dari MyDatabase
-        // @Volatile memastikan perubahan pada INSTANCE terlihat di semua thread
         @Volatile
         private var INSTANCE: MyDatabase? = null
 
-        // Fungsi untuk mendapatkan instance database
-        // Jika INSTANCE belum diinisialisasi, buat instance baru secara thread-safe
         fun getInstance(context: Context): MyDatabase {
-            // Jika INSTANCE belum ada, buat instance baru dengan synchronized block
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     // Menggunakan application context untuk menghindari memory leaks
