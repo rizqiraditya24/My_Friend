@@ -29,4 +29,6 @@
     <string name="insert_photo">Insert Photo</string>
     <string name="from_camera">From Camera</string>
     <string name="pick_gallery">Pick Gallery</string>
+    <string name="no_data_icon_desc">no_data_icon_desc</string>
+    <string name="no_data_found">No Data Found</string>
 </resources>

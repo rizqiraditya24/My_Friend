@@ -1,64 +1,75 @@
 package com.example.myfriend
 
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import com.crocodic.core.base.viewmodel.CoreViewModel
+import com.example.myfriend.api_repository.DataProductsRepo
 import com.example.myfriend.data.Friend
 import com.example.myfriend.data.FriendDao
+import com.example.myfriend.dataApi.DataProduct
 import com.example.myfriend.repo.FriendRepository
-import com.crocodic.core.base.viewmodel.CoreViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
-class FriendViewModel@Inject constructor(
+class FriendViewModel @Inject constructor(
     private val friendDao: FriendDao,
-    private val friendRepository: FriendRepository
+    private val dataProductsRepo: DataProductsRepo,
+    private val repository: FriendRepository
 ) : CoreViewModel() {
 
-    private val _friends = MutableSharedFlow<List<Friend>>()
-    val friends = _friends.asSharedFlow()
+    private val _product = MutableStateFlow<List<DataProduct>>(emptyList())
+    val product: StateFlow<List<DataProduct>> = _product
 
-    fun getFriends(keyword: String) = viewModelScope.launch {
-        friendRepository.searchFriend(keyword).collect{
-            _friends.emit(it)
+
+    fun getProduct(keyword: String = "") = viewModelScope.launch {
+        dataProductsRepo.getProducts(keyword).collect { it: List<DataProduct> ->
+            _product.emit(it)
         }
     }
 
-    // Mengambil semua data teman dari database melalui FriendDao
-    fun getFriend() = viewModelScope.launch {
-        friendDao.getAll().collect { friendList ->
-            _friends.emit(friendList)
-        }
-    }
 
-    // Mengambil data teman berdasarkan ID dari database melalui FriendDao
+    fun getFriend() = friendDao.getAll()
+
     fun getFriendById(id: Int) = friendDao.getItemById(id)
 
-    // Menyisipkan data teman baru ke dalam database
-    // Fungsi ini bersifat suspend dan harus dipanggil dari dalam coroutine
     suspend fun insertFriend(data: Friend) {
         friendDao.insert(data)
     }
 
-    // Memperbarui data teman yang ada dalam database
-    // Fungsi ini bersifat suspend dan harus dipanggil dari dalam coroutine
     suspend fun editFriend(data: Friend) {
-        friendDao.updateFriend(data)
+        friendDao.update(data)
     }
 
-    // Menghapus data teman dari database
-    // Fungsi ini bersifat suspend dan harus dipanggil dari dalam coroutine
     suspend fun deleteFriend(data: Friend) {
         friendDao.delete(data)
     }
 
-    override fun apiLogout() {
+    suspend fun searchFriend(keyword: String): Flow<List<Friend>> {
+        return repository.searchFriend(keyword)
+    }
 
+    fun searchProducts(keyword: String): Flow<List<DataProduct>> = flow {
+        val filteredProducts = _product.value.filter { product ->
+            product.title.contains(keyword, ignoreCase = true) ||
+                    product.description.contains(keyword, ignoreCase = true)
+        }
+        emit(filteredProducts)
+    }
+
+
+    override fun apiLogout() {
+        TODO("Not yet implemented")
     }
 
     override fun apiRenewToken() {
-
+        TODO("Not yet implemented")
     }
+
 }

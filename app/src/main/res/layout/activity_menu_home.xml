@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <!-- Layout LinearLayout digunakan untuk mengatur tata letak komponen secara vertikal -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/main"
         android:orientation="vertical"
         android:padding="@dimen/_14sdp">
 
-        <!-- EditText untuk kolom pencarian -->
         <EditText
             android:id="@+id/search_bar"
             style="@style/searchTheme"
@@ -26,7 +25,6 @@
             android:textColor="@color/black"
             tools:ignore="VisualLintTextFieldSize" />
 
-        <!-- RecyclerView untuk daftar teman -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
@@ -38,16 +36,46 @@
             android:scrollbars="vertical"
             tools:listitem="@layout/activity_item_friend"/>
 
-        <!-- Tombol untuk menambah teman baru -->
-        <ImageButton
-            android:id="@+id/btnAddFriend"
-            style="@style/btnAddTheme"
-            android:layout_width="@dimen/_48sdp"
-            android:layout_height="@dimen/_48sdp"
-            android:layout_gravity="end"
-            android:background="@drawable/ic_button_add"
-            android:contentDescription="@string/des_btn_camera"
-            android:src="@drawable/ic_add" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        android:id="@+id/no_data_layout"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/iconNoData"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_search_off"
+            android:contentDescription="@string/no_data_icon_desc" />
+
+        <TextView
+            android:id="@+id/tvNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_data_found"
+            android:textSize="@dimen/_16sdp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/black" />
 
     </LinearLayout>
-</layout>
+
+    <ImageButton
+        android:id="@+id/btnAddFriend"
+        style="@style/btnAddTheme"
+        android:layout_width="@dimen/_48sdp"
+        android:layout_height="@dimen/_48sdp"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/_16sdp"
+        android:background="@drawable/ic_button_add"
+        android:contentDescription="@string/des_btn_camera"
+        android:src="@drawable/ic_add" />
+
+</FrameLayout>
