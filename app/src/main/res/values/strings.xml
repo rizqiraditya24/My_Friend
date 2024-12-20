@@ -31,4 +31,16 @@
     <string name="pick_gallery">Pick Gallery</string>
     <string name="no_data_icon_desc">no_data_icon_desc</string>
     <string name="no_data_found">No Data Found</string>
+    <string name="sorting_products">Sorting Products</string>
+    <string name="title">Title</string>
+    <string name="descriptionshorting">Description</string>
+    <string name="order_products">Order Products</string>
+    <string name="ascending">Ascending</string>
+    <string name="descending">Descending</string>
+    <string name="simpan">Simpan</string>
+    <string name="filter_products">Filter Products</string>
+    <string name="tops">Tops</string>
+    <string name="vehicle">Vehicle</string>
+    <string name="laptops">Laptops</string>
+    <string name="motorcycle">Motorcycle</string>
 </resources>
