@@ -26,20 +26,34 @@ class ImplDataProductRepo @Inject constructor(private val apiService: ApiService
         )
     }
 
-    override fun searchProducts(keyword: String): Flow<List<DataProduct>> = flow {
+    override fun sortProducts(sortBy: String, order: String): Flow<List<DataProduct>> = flow {
         ApiObserver.run(
-            { apiService.getProduct(keyword) }, // Panggil endpoint pencarian di ApiService
+            { apiService.sortProducts(sortBy, order) },
             false,
             object : ApiObserver.ModelResponseListener<ResponseDataProduct> {
                 override suspend fun onSuccess(response: ResponseDataProduct) {
-                    emit(response.product) // Emit hasil pencarian
+                    emit(response.product)
                 }
 
                 override suspend fun onError(response: ResponseDataProduct) {
-                    emit(emptyList()) // Emit list kosong jika ada error
+                    emit(emptyList())
                 }
-            }
-        )
+            })
+    }
+
+    override fun filterProducts(filter: String): Flow<List<DataProduct>> = flow {
+        ApiObserver.run(
+            { apiService.filterProducts(filter) },
+            false,
+            object : ApiObserver.ModelResponseListener<ResponseDataProduct> {
+                override suspend fun onSuccess(response: ResponseDataProduct) {
+                    emit(response.product)
+                }
+
+                override suspend fun onError(response: ResponseDataProduct) {
+                    emit(emptyList())
+                }
+            })
     }
 
 }

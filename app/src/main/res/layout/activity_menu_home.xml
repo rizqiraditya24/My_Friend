@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -34,7 +33,7 @@
             android:padding="@dimen/_2sdp"
             android:clipToPadding="false"
             android:scrollbars="vertical"
-            tools:listitem="@layout/activity_item_friend"/>
+            tools:listitem="@layout/activity_item_friend" />
 
     </LinearLayout>
 
@@ -67,15 +66,34 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/btnAddFriend"
-        style="@style/btnAddTheme"
-        android:layout_width="@dimen/_48sdp"
-        android:layout_height="@dimen/_48sdp"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="@dimen/_16sdp"
-        android:background="@drawable/ic_button_add"
-        android:contentDescription="@string/des_btn_camera"
-        android:src="@drawable/ic_add" />
+    <!-- LinearLayout yang berada di bawah -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="@dimen/_16sdp"
+        android:gravity="end">
+
+        <ImageButton
+            android:id="@+id/btnSort"
+            style="@style/btnAddTheme"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/ic_button_add"
+            android:contentDescription="@string/button_sort"
+            android:src="@drawable/ic_sort" />
+
+        <ImageButton
+            android:id="@+id/btnFilter"
+            style="@style/btnAddTheme"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            android:background="@drawable/ic_button_add"
+            android:contentDescription="@string/button_filter"
+            android:src="@drawable/ic_filter" />
+
+    </LinearLayout>
 
 </FrameLayout>

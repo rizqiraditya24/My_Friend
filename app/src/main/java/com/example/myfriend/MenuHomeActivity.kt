@@ -8,6 +8,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.myfriend.btn_sheet.FilterProducts
+import com.example.myfriend.btn_sheet.ShortingProducts
 import com.example.myfriend.databinding.ActivityMenuHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -49,6 +51,23 @@ class MenuHomeActivity : AppCompatActivity() {
             }
             override fun afterTextChanged(s: Editable?) {}
         })
+
+        binding.btnFilter.setOnClickListener {
+            val btmSht = FilterProducts { filter ->
+                viewModel.filterProducts(filter)
+            }
+
+            btmSht.show(supportFragmentManager, "BtmShtFilteringProducts")
+        }
+
+
+        binding.btnSort.setOnClickListener {
+            val btmSht = ShortingProducts { sortBy, order ->
+                viewModel.sortProducts(sortBy, order)
+            }
+
+            btmSht.show(supportFragmentManager, "BtmShtSortingProducts")
+        }
     }
 
     private fun searchFriends(keyword: String) {

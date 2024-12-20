@@ -43,4 +43,6 @@
     <string name="vehicle">Vehicle</string>
     <string name="laptops">Laptops</string>
     <string name="motorcycle">Motorcycle</string>
+    <string name="button_sort">Button Sort</string>
+    <string name="button_filter">Button Filter</string>
 </resources>

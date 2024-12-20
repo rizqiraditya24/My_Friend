@@ -34,6 +34,18 @@ class FriendViewModel @Inject constructor(
         }
     }
 
+    fun sortProducts(sortBy: String = "", orderBy: String = "") = viewModelScope.launch {
+        dataProductsRepo.sortProducts(sortBy, orderBy).collect {
+            _product.emit(it)
+        }
+    }
+
+    fun filterProducts(filter: String = "") = viewModelScope.launch {
+        dataProductsRepo.filterProducts(filter).collect {
+            _product.emit(it)
+        }
+    }
+
 
     fun getFriend() = friendDao.getAll()
 
