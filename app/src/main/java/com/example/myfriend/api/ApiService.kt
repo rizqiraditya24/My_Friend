@@ -23,4 +23,10 @@ interface ApiService {
     suspend fun filterProducts(
         @Path("category") category: String
     ): ResponseDataProduct
+
+    @GET("products")
+    suspend fun pagingProducts(
+        @Query("limit") limit: Int,
+        @Query("skip") skip: Int
+    ): ResponseDataProduct
 }
