@@ -8,5 +8,7 @@ data class DataProduct(
     @SerializedName("title")
     val title: String,
     @SerializedName("description")
-    val description: String
+    val description: String,
+    @SerializedName("thumbnail")
+    val thumbnail: String
 )

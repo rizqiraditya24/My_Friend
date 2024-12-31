@@ -5,6 +5,7 @@ import com.example.myfriend.data.MyDatabase
 import com.crocodic.core.data.CoreSession
 import com.crocodic.core.helper.NetworkHelper
 import com.example.myfriend.api.ApiService
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,4 +40,8 @@ class AppModule {
             converterFactory = listOf(GsonConverterFactory.create())
         )
     }
+
+    @Singleton
+    @Provides
+    fun provideGson() = Gson()
 }

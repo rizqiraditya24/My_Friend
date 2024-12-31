@@ -29,6 +29,7 @@
                 android:layout_height="@dimen/_130sdp"
                 android:contentDescription="@string/profile_image"
                 android:scaleType="centerCrop"
+                urlImage='@{data.thumbnail}'
                 android:src="@drawable/ic_profile_placeholder"
                 tools:ignore="ImageContrastCheck" />
 
