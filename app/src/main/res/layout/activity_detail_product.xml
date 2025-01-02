@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -18,15 +19,27 @@
         android:orientation="vertical"
         tools:context=".DetailProductActivity">
 
-        <ImageView
-            android:id="@+id/iv_photo"
-            android:layout_width="@dimen/_170sdp"
-            android:layout_height="@dimen/_170sdp"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_13sdp"
-            android:contentDescription="@string/image_friend"
-            urlImage='@{data.thumbnail}'
-            android:src="@color/dark_gray" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="@dimen/_170sdp"
+                android:layout_height="@dimen/_170sdp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_13sdp"
+                android:contentDescription="@string/image_friend"
+                urlImage='@{data.thumbnail}'
+                app:progressBar="@{progressBar}"
+                android:src="@color/dark_gray" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="visible" />
+        </FrameLayout>
 
         <TextView
             android:layout_width="match_parent"

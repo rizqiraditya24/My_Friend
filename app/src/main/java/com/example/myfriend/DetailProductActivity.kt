@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.crocodic.core.base.activity.NoViewModelActivity
+import com.example.myfriend.ImageHelper.loadUrlWithProgress
 import com.example.myfriend.dataApi.DataProduct
 import com.example.myfriend.databinding.ActivityDetailProductBinding
 import com.google.gson.Gson
@@ -29,6 +30,9 @@ class DetailProductActivity :  NoViewModelActivity<ActivityDetailProductBinding>
 
         val dataIntent = intent.getStringExtra(DATA)
         binding.data = gson.fromJson(dataIntent, DataProduct::class.java)
+
+        val imageUrl = intent.getStringExtra(DATA) // Ambil URL gambar dari Intent
+        binding.ivPhoto.loadUrlWithProgress(imageUrl, binding.progressBar)
     }
     companion object {
         const val DATA = "data"
