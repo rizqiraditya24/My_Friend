@@ -9,14 +9,17 @@ import com.crocodic.core.base.adapter.CorePagingSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.crocodic.core.base.viewmodel.CoreViewModel
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.myfriend.api_repository.DataProductsRepo
 import com.example.myfriend.data.Friend
 import com.example.myfriend.data.FriendDao
 import com.example.myfriend.dataApi.DataProduct
 import com.example.myfriend.repo.FriendRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
@@ -82,6 +85,19 @@ class FriendViewModel @Inject constructor(
     fun filterProducts(filter: String = "") = viewModelScope.launch {
         dataProductsRepo.filterProducts(filter).collect {
             _product.emit(it)
+        }
+    }
+
+    private val _slider = MutableSharedFlow<List<SlideModel>>()
+    val slider = _slider.asSharedFlow()
+
+    fun getSlider() = viewModelScope.launch {
+        dataProductsRepo.getSlider().collect {
+            val data = ArrayList<SlideModel>()
+            it.forEach {photo->
+                data.add(SlideModel(photo.thumbnail, photo.title))
+            }
+            _slider.emit(data)
         }
     }
 

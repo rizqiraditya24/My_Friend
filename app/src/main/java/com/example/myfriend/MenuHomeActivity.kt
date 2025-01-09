@@ -53,6 +53,12 @@ class MenuHomeActivity :  CoreActivity<ActivityMenuHomeBinding, FriendViewModel>
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
+                    viewModel.slider.collect { data ->
+                        binding.ivSlider.setImageList(data)
+                    }
+                }
+
+                launch {
                     viewModel.getPagingProducts().collectLatest { data ->
                         adapterCore.submitData(data)
                     }
@@ -60,6 +66,7 @@ class MenuHomeActivity :  CoreActivity<ActivityMenuHomeBinding, FriendViewModel>
             }
         }
 
+        viewModel.getSlider()
         binding.searchBar.doOnTextChanged { text, start, before, count ->
             val keyword = "%${text.toString().trim()}%"
             viewModel.getProduct(keyword)
@@ -82,5 +89,3 @@ class MenuHomeActivity :  CoreActivity<ActivityMenuHomeBinding, FriendViewModel>
 
 
 }
-
-
