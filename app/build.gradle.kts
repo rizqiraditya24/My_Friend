@@ -93,6 +93,8 @@ dependencies {
 
     implementation(libs.imageslideshow)
 
+    implementation (libs.androidx.work.runtime.ktx)
+
 }
 
 kapt {

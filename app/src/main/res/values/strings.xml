@@ -45,4 +45,8 @@
     <string name="motorcycle">Motorcycle</string>
     <string name="button_sort">Button Sort</string>
     <string name="button_filter">Button Filter</string>
+    <string name="show_notification">Show Notification</string>
+    <string name="request_notification">Request Notification</string>
+    <string name="lbl_permission_notification">Aktifkan notifika Anda untuk dapat melihat notifikasi!</string>
+    <string name="lbl_setting">Setting</string>
 </resources>
