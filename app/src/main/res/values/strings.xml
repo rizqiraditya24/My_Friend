@@ -49,4 +49,7 @@
     <string name="request_notification">Request Notification</string>
     <string name="lbl_permission_notification">Aktifkan notifika Anda untuk dapat melihat notifikasi!</string>
     <string name="lbl_setting">Setting</string>
+    <string name="_0">0</string>
+    <string name="show_in_app_notification">Show In App Notification</string>
+    <string name="input_countdown_in_second">Input countdown in second</string>
 </resources>
